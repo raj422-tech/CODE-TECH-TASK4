@@ -1,0 +1,16 @@
+A=print
+import numpy as W,pandas as X,matplotlib.pyplot as F
+from sklearn.datasets import load_iris as B
+from sklearn.model_selection import train_test_split as C
+from sklearn.linear_model import LogisticRegression as E
+from sklearn.ensemble import RandomForestClassifier as G
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score as H,precision_score as I,recall_score as J,f1_score as K,confusion_matrix as L
+from sklearn.metrics import ConfusionMatrixDisplay as M
+D=B()
+N=D.data
+O=D.target
+P,Q,R,S=C(N,O,test_size=.2,random_state=42)
+T={'Logistic Regression':E(max_iter=200),'Random Forest':G(),'Support Vector Machine':SVC()}
+def U(model,X_train,X_test,y_train,y_test):E=model;B=y_test;E.fit(X_train,y_train);C=E.predict(X_test);G=H(B,C);N=I(B,C,average='weighted');O=J(B,C,average='weighted');P=K(B,C,average='weighted');Q=L(B,C);R=M(confusion_matrix=Q,display_labels=D.target_names);A(f"Model: {E.__class__.__name__}");A(f"Accuracy: {G:.2f}");A(f"Precision: {N:.2f}");A(f"Recall: {O:.2f}");A(f"F1-Score: {P:.2f}");R.plot(cmap=F.cm.Blues);F.show()
+for(Y,V)in T.items():U(V,P,Q,R,S)
